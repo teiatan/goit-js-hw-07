@@ -31,6 +31,16 @@ previewImagesContainer.append(...galleryItemsEl);
 
 // delegation
 
+previewImagesContainer.addEventListener(`click`, imageInccreaseHandler);
+
+function imageInccreaseHandler(event) {
+    if (event.target.nodeName !== `IMG`) {
+        return;
+    }
+
+
+}
+
 
 console.log(galleryItemsEl);
 
