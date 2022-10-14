@@ -13,18 +13,21 @@ for (let galleryItem of galleryItems) {
     const galleryLinkEl = document.createElement(`a`);
     galleryLinkEl.classList.add(`gallery__link`);
     galleryLinkEl.href = galleryItem.original;
+    galleryLinkEl.setAttribute("onclick", "return false");
 
     const galleryImgEl = document.createElement(`img`);
     galleryImgEl.classList.add(`gallery__image`);
     galleryImgEl.src = galleryItem.preview;
-    galleryLinkEl.dataSource = galleryItem.original;
     galleryImgEl.alt = galleryItem.description;
+    galleryImgEl.setAttribute("data-source", galleryItem.original);
 
     galleryItemEl.appendChild(galleryLinkEl);
     galleryLinkEl.appendChild(galleryImgEl);
 
     galleryItemsEl.push(galleryItemEl);
 
+    
+ 
 }
 
 previewImagesContainer.append(...galleryItemsEl);
@@ -38,9 +41,9 @@ function imageInccreaseHandler(event) {
         return;
     }
 
-
-}
-
-
-console.log(galleryItemsEl);
-
+    basicLightbox.create(`
+        <img width="1400" height="900" src="${event.target.getAttribute('data-source')}">
+    `).show()
+    
+    console.log(event.target.getAttribute('data-source'));
+};
