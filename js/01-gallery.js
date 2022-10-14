@@ -25,8 +25,6 @@ for (let galleryItem of galleryItems) {
     galleryLinkEl.appendChild(galleryImgEl);
 
     galleryItemsEl.push(galleryItemEl);
-
-    
  
 }
 
@@ -45,5 +43,5 @@ function imageInccreaseHandler(event) {
         <img width="1400" height="900" src="${event.target.getAttribute('data-source')}">
     `).show()
     
-    console.log(event.target.getAttribute('data-source'));
+    
 };
