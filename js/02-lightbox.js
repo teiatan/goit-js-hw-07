@@ -1,7 +1,6 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
 
-// creating collection of pictures 
 const previewImagesContainer = document.querySelector(`.gallery`);
 const galleryItemsEl = [];
 
@@ -27,8 +26,6 @@ for (let galleryItem of galleryItems) {
 
 previewImagesContainer.append(...galleryItemsEl);
 
-// delegation
-
 let gallery = new SimpleLightbox('.gallery a', {captions: true,
     captionSelector: 'img',
     captionPosition: 'bottom',
@@ -37,12 +34,5 @@ let gallery = new SimpleLightbox('.gallery a', {captions: true,
     captionDelay: 250,
     });
 gallery.on('show.simplelightbox', function (event) {
-	// Do something…
-
-    
+	
 });
-
-/*
-let SimpleLightbox.sourceAttr = e.target.getAttribute('alt');
-  console.log(SimpleLightbox.sourceAttr);
-  */

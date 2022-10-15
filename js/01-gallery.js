@@ -1,8 +1,6 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
 
-
-// creating collection of pictures 
 const previewImagesContainer = document.querySelector(`.gallery`);
 const galleryItemsEl = [];
 
@@ -30,18 +28,25 @@ for (let galleryItem of galleryItems) {
 
 previewImagesContainer.append(...galleryItemsEl);
 
-// delegation
-
 previewImagesContainer.addEventListener(`click`, imageInccreaseHandler);
 
 function imageInccreaseHandler(event) {
+
     if (event.target.nodeName !== `IMG`) {
         return;
     }
 
     basicLightbox.create(`
         <img width="1400" height="900" src="${event.target.getAttribute('data-source')}">
-    `).show()
+    `).show();
     
-    
+    document.addEventListener("keydown", modalCloseHandler);
+
+    function modalCloseHandler(event) {
+        
+        if (event.code === 'Escape') {
+            document.removeEventListener("keydown", modalCloseHandler);
+            basicLightbox.close();
+        }
+    }
 };
