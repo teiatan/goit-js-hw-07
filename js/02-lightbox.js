@@ -29,6 +29,20 @@ previewImagesContainer.append(...galleryItemsEl);
 
 // delegation
 
+let gallery = new SimpleLightbox('.gallery a', {captions: true,
+    captionSelector: 'img',
+    captionPosition: 'bottom',
+    captionType: 'attr',
+    captionsData: 'alt',
+    captionDelay: 250,
+    });
+gallery.on('show.simplelightbox', function (event) {
+	// Do something…
 
-console.log(galleryItemsEl);
+    
+});
 
+/*
+let SimpleLightbox.sourceAttr = e.target.getAttribute('alt');
+  console.log(SimpleLightbox.sourceAttr);
+  */
