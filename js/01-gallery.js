@@ -38,15 +38,21 @@ function imageInccreaseHandler(event) {
 
     basicLightbox.create(`
         <img width="1400" height="900" src="${event.target.getAttribute('data-source')}">
-    `).show();
-    
-    document.addEventListener("keydown", modalCloseHandler);
+    `,
+    {
+        onShow: () => {
+            document.addEventListener("keydown", modalCloseHandler);
+        },
+        onClose: () => {
+            document.removeEventListener("keydown", modalCloseHandler);
+        },
+      }
+    ).show();
 
     function modalCloseHandler(event) {
         
         if (event.code === 'Escape') {
-            document.removeEventListener("keydown", modalCloseHandler);
             basicLightbox.close();
         }
     }
-};
+}
