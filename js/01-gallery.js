@@ -36,7 +36,7 @@ function imageInccreaseHandler(event) {
         return;
     }
 
-    basicLightbox.create(`
+    const instance = basicLightbox.create(`
         <img width="1400" height="900" src="${event.target.getAttribute('data-source')}">
     `,
     {
@@ -47,12 +47,14 @@ function imageInccreaseHandler(event) {
             document.removeEventListener("keydown", modalCloseHandler);
         },
       }
-    ).show();
+    );
 
     function modalCloseHandler(event) {
         
         if (event.code === 'Escape') {
-            basicLightbox.close();
+            instance.close();
         }
     }
+
+    instance.show();
 }
